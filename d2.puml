@@ -1,0 +1,19 @@
+@startuml
+class Heladeria {
++ {static} void main(String[])
+- {static} void imprimirMenu(int)
+- {static} void finalizar(List<PoteDeHelado>)
+- {static} void imprimirRecaudacionTotal(List<PoteDeHelado>)
+- {static} void imprimirSaborQueGeneroMasGanancias(List<PoteDeHelado>)
+- {static} void imprimirSaborMasVendido(List<PoteDeHelado>)
+- {static} void imprimirSaborMasYMenosVendidoEnKilos(List<PoteDeHelado>)
+- {static} void imprimirRecipienteMasPedido(List<PoteDeHelado>)
+- {static} void imprimirPorcentajeDeVentaDeCadaSabor(List<PoteDeHelado>)
+- {static} void imprimirPorcentajeDeRecaudacionDeCadaSabor(List<PoteDeHelado>)
+- {static} void imprimirElPoteQueMasDineroRecaudo(List<PoteDeHelado>)
+- {static} void imprimirElPoteMasYMenosVendido(List<PoteDeHelado>)
+- {static} void imprimirPorcentajeDeVentaDeCadaPote(List<PoteDeHelado>)
+- {static} void imprimirPorcentajeDeRecaudacionDeCadaPote(List<PoteDeHelado>)
+}
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class PoteDeHelado {
+- Sabor sabor
+- double precio
+- Cantidad cantidad
++ <<Create>> PoteDeHelado()
++ String toString()
++ Sabor getSabor()
++ void setSabor(Sabor)
++ double getPrecio()
++ void setPrecio(double)
++ Cantidad getCantidad()
++ void setCantidad(Cantidad)
+}
+
+
+enum Sabor {
++  CHOCOLATE_AMARGO
++  VAINILLA
++  FRUTILLA_A_LA_CREMA
+}
+
+enum Cantidad {
++  UN_CUARTO
++  MEDIO_KILO
++  UN_KILO
+}
+
+@enduml
