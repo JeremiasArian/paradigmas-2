@@ -10,15 +10,15 @@ public class Main {
         System.out.println("1) Agregar alumno");
         System.out.println("-1 Salir de este programa.");
 
-        Scanner lector;
-        boolean continuar = true;
+        ingresarInputYValidar();
+    }
 
+    private static void ingresarInputYValidar(){
         int opcion = 0;
-
         while (opcion==0){
-            lector = new Scanner(System.in);
+            Scanner s = new Scanner(System.in);
             try {
-                opcion = lector.nextInt();
+                opcion = s.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Entrada invalida");
             }
