@@ -24,8 +24,10 @@ public class Main {
             }
 
             if(opcion ==-1) {
+                System.out.println("Saliendo...");
                 break;
             } else if(opcion == 1){
+                opcion = 0;
                 registrarAlumno();
             } else{
                 System.out.println("Opciones disponibles:");
