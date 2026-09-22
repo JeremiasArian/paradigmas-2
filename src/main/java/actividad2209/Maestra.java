@@ -3,7 +3,7 @@ package actividad2209;
 public class Maestra {
     private String nombre;
     private String apellido;
-    private String legajo;
+    private int legajo;
     private double sueldo;
 
     public String getNombre() {
