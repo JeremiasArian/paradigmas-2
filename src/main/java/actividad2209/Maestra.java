@@ -22,11 +22,11 @@ public class Maestra {
         this.apellido = apellido;
     }
 
-    public String getLegajo() {
+    public int getLegajo() {
         return legajo;
     }
 
-    public void setLegajo(String legajo) {
+    public void setLegajo(int legajo) {
         this.legajo = legajo;
     }
 
