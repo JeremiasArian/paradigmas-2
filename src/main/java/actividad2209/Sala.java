@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Sala {
     private ArrayList<Alumno> listaDeAlumnos = new ArrayList<>();
+    private ArrayList<Maestra> listaDeMaestras = new ArrayList<>();
 
     public ArrayList<Alumno> getListaDeAlumnos() {
         return listaDeAlumnos;
@@ -11,6 +12,14 @@ public class Sala {
 
     public void setListaDeAlumnos(ArrayList<Alumno> listaDeAlumnos) {
         this.listaDeAlumnos = listaDeAlumnos;
+    }
+
+    public ArrayList<Maestra> getListaDeMaestras() {
+        return listaDeMaestras;
+    }
+
+    public void setListaDeMaestras(ArrayList<Maestra> listaDeMaestras) {
+        this.listaDeMaestras = listaDeMaestras;
     }
 
     public enum TipoDeSala {
