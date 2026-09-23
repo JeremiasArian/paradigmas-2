@@ -21,6 +21,11 @@ public class Main {
         }
 
         System.out.println("Bienvenido, administrador.");
+
+        SalasDisponibles salasDisponibles = new SalasDisponibles();
+
+        salasDisponibles.registrarLactarios();
+
         System.out.println("Opciones disponibles:");
         System.out.println("1) Agregar alumno");
         System.out.println("-1 Salir de este programa.");
