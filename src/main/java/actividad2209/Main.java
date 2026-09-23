@@ -207,6 +207,32 @@ public class Main {
                 sl.registrarLactarios();
                 break;
             }
+            else if (opcion == 2) {
+                sl.registrarDeambuladores1();
+                break;
+            }
+            else if (opcion == 3) {
+                sl.registrarDeambuladores2();
+                break;
+            }
+            else if (opcion == 4) {
+                sl.registrarSalas2();
+                break;
+            }
+            else if (opcion == 5) {
+                sl.registrarSalas3();
+                break;
+            }
+            else {
+                System.out.println("Entrada invalida");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                imprimirMenuDeSalas();
+                opcion = 0;
+            }
         }
     }
 
