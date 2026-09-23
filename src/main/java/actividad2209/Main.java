@@ -53,6 +53,17 @@ public class Main {
                 }
                 imprimirMenu();
             }
+            else if(opcion == 2){
+                opcion = 0;
+                Maestra mae = new Maestra();
+                mae.registrarYAsignarASalon(sl);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                imprimirMenu();
+            }
         }
     }
 

@@ -6,6 +6,10 @@ public class Maestra {
     private int legajo;
     private double sueldo;
 
+    public void registrarYAsignarASalon(SalasDisponibles sl){
+
+    }
+
     public String getNombre() {
         return nombre;
     }
