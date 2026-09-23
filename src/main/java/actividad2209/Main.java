@@ -1,10 +1,25 @@
 package actividad2209;
 
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String args[]) {
+        System.out.println("Iniciando Sistema...");
+
+        long total = 235;
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 1; i <= total; i = i + 3) {
+            try {
+                Thread.sleep(50);
+                printProgress(startTime, total, i);
+            } catch (InterruptedException e) {
+            }
+        }
+
         System.out.println("Bienvenido, administrador.");
         System.out.println("Opciones disponibles:");
         System.out.println("1) Agregar alumno");
@@ -146,5 +161,33 @@ public class Main {
         System.out.println("2) Tarde");
         System.out.println("3) A los dos");
         ingresarInputYValidar(alumno);
+    }
+
+    // Source - https://stackoverflow.com/a/39257908
+    // Posted by Mike Shauneu, modified by community. See post 'Timeline' for change history
+    // Retrieved 2026-09-23, License - CC BY-SA 3.0
+    private static void printProgress(long startTime, long total, long current) {
+        long eta = current == 0 ? 0 :
+                (total - current) * (System.currentTimeMillis() - startTime) / current;
+
+        String etaHms = current == 0 ? "N/A" :
+                String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(eta),
+                        TimeUnit.MILLISECONDS.toMinutes(eta) % TimeUnit.HOURS.toMinutes(1),
+                        TimeUnit.MILLISECONDS.toSeconds(eta) % TimeUnit.MINUTES.toSeconds(1));
+
+        StringBuilder string = new StringBuilder(140);
+        int percent = (int) (current * 100 / total);
+        string
+                .append('\r')
+                .append(String.join("", Collections.nCopies(percent == 0 ? 2 : 2 - (int) (Math.log10(percent)), " ")))
+                .append(String.format(" %d%% [", percent))
+                .append(String.join("", Collections.nCopies(percent, "=")))
+                .append('>')
+                .append(String.join("", Collections.nCopies(100 - percent, " ")))
+                .append(']')
+                .append(String.join("", Collections.nCopies(current == 0 ? (int) (Math.log10(total)) : (int) (Math.log10(total)) - (int) (Math.log10(current)), " ")))
+                .append(String.format(" %d/%d, ETA: %s", current, total, etaHms));
+
+        System.out.print(string);
     }
 }
