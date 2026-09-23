@@ -46,6 +46,11 @@ public class Main {
                 opcion = 0;
                 imprimirMenuDeSalas();
                 elegirSalaARegistrar(sl);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 imprimirMenu();
             }
         }
