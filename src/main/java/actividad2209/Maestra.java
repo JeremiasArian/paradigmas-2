@@ -41,9 +41,19 @@ public class Maestra {
             } else if (contador == 1) {
                 apellido = entrada;
             } else if (contador == 2) {
-                legajo = Integer.parseInt(entrada);
+                try {
+                    legajo = Integer.parseInt(entrada);
+                } catch (NumberFormatException e) {
+                    System.out.println("Entrada invalida");
+                    contador = 1;
+                }
             } else if (contador == 3) {
-                sueldo = Double.parseDouble(entrada);
+                try {
+                    sueldo = Double.parseDouble(entrada);
+                } catch (NumberFormatException e) {
+                    System.out.println("Entrada invalida");
+                    contador = 2;
+                }
             }
 
             contador++;
