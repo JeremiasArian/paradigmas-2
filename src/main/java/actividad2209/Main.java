@@ -24,26 +24,12 @@ public class Main {
 
         SalasDisponibles salasDisponibles = new SalasDisponibles();
 
-        salasDisponibles.registrarLactarios();
+        imprimirMenu();
 
-        System.out.println("Todas las salas se registraron con exito");
-        System.out.println("Opciones disponibles para el día de hoy:");
-        System.out.println("1) Registrar una sala");
-        System.out.println("2) Registrar maestra");
-        System.out.println("3) Inscribir alumno");
-        System.out.println("4) Eliminar alumno");
-        System.out.println("5) Eliminar una sala");
-        System.out.println("6) Eliminar una maestra de un salon");
-        System.out.println("7) Agregar una maestra a un salon");
-        System.out.println("8) Calcular la ganancia mensual del jardín");
-        System.out.println("9) Imprimir cuota de un alumno seleccionado");
-        System.out.println("10) Imprimir la lista de alumnos ordenada por apellido en formulario independiente");
-        System.out.println("-1 Salir de este programa.");
-
-        ingresarInputYValidar();
+        ingresarInputYValidar(salasDisponibles);
     }
 
-    private static void ingresarInputYValidar(){
+    private static void ingresarInputYValidar(SalasDisponibles sl){
         int opcion = 0;
         while (opcion==0){
             Scanner s = new Scanner(System.in);
@@ -58,12 +44,9 @@ public class Main {
                 break;
             } else if(opcion == 1){
                 opcion = 0;
-                registrarAlumno();
-            } else{
-                System.out.println("Opciones disponibles:");
-                System.out.println("1) Agregar alumno");
-                System.out.println("-1 Salir de este programa.");
-                opcion = 0;
+                imprimirMenuDeSalas();
+                elegirSalaARegistrar(sl);
+                imprimirMenu();
             }
         }
     }
@@ -177,6 +160,51 @@ public class Main {
         System.out.println("3) A los dos");
         ingresarInputYValidar(alumno);
     }
+
+    private static void imprimirMenu(){
+        System.out.println("Opciones disponibles para el día de hoy:");
+        System.out.println("1) Registrar una sala");
+        System.out.println("2) Registrar maestra");
+        System.out.println("3) Inscribir alumno");
+        System.out.println("4) Eliminar alumno");
+        System.out.println("5) Eliminar una sala");
+        System.out.println("6) Eliminar una maestra de un salon");
+        System.out.println("7) Agregar una maestra a un salon");
+        System.out.println("8) Calcular la ganancia mensual del jardín");
+        System.out.println("9) Imprimir cuota de un alumno seleccionado");
+        System.out.println("10) Imprimir la lista de alumnos ordenada por apellido en formulario independiente");
+        System.out.println("-1 Salir de este programa.");
+    }
+
+    private static void imprimirMenuDeSalas(){
+        System.out.println("Ingresá que tipo de salas queres registrar:");
+        System.out.println("1) Lactario");
+        System.out.println("2) Deambulador tipo 1");
+        System.out.println("3) Deambulador tipo 2");
+        System.out.println("4) Sala tipo 2");
+        System.out.println("5) Sala tipo 3");
+    }
+
+    private static void elegirSalaARegistrar(SalasDisponibles sl) {
+        int opcion = 0;
+        while (opcion == 0) {
+            Scanner s = new Scanner(System.in);
+            try {
+                opcion = s.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada invalida");
+            }
+
+            if (opcion == -1) {
+                System.out.println("Saliendo...");
+                System.exit(0);
+            } else if (opcion == 1) {
+                sl.registrarLactarios();
+                break;
+            }
+        }
+    }
+
 
     // Source - https://stackoverflow.com/a/39257908
     // Posted by Mike Shauneu, modified by community. See post 'Timeline' for change history
