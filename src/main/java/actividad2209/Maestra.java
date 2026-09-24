@@ -10,6 +10,12 @@ public class Maestra {
     private double sueldo;
 
     public void registrarYAsignarASalon(SalasDisponibles sl){
+        if (sl.haySalones()) {
+            System.out.println("No hay salones registrados!");
+            System.out.println("Primero, registrá al menos uno marcando la opción 1");
+            return;
+        }
+
         String entrada = "";
         int contador = 0;
         while (contador <= 3) {
@@ -58,7 +64,34 @@ public class Maestra {
 
             contador++;
         }
-        System.out.println(apellido+", "+nombre+" fue registrada con exito");
+
+        System.out.println("Para finalizar el registro, asigná a "+apellido+", "+nombre+" a uno de los sgtes. salones:");
+
+        try {
+            Thread.sleep(3269);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        sl.imprimirSalasRegistradas();
+
+        int seleccion = -2;
+        while (seleccion == -2) {
+            Scanner s = new Scanner(System.in);
+
+            try {
+                seleccion = s.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada invalida");
+            }
+
+            if (seleccion <= -2) {
+                continue;
+            } else if (seleccion == -1) System.exit(0);
+
+            sl.asignarMaestraASala(legajo, seleccion);
+            System.out.println(apellido+", "+nombre+" fue registrada con exito");
+        }
     }
 
     public String getNombre() {

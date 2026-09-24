@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Sala {
     private ArrayList<Alumno> listaDeAlumnos = new ArrayList<>();
-    private ArrayList<Maestra> listaDeMaestras = new ArrayList<>();
+    private ArrayList<Integer> listaDeMaestras = new ArrayList<>();
     private TipoDeSala tipoDeSala;
 
     public ArrayList<Alumno> getListaDeAlumnos() {
@@ -15,11 +15,11 @@ public class Sala {
         this.listaDeAlumnos = listaDeAlumnos;
     }
 
-    public ArrayList<Maestra> getListaDeMaestras() {
+    public ArrayList<Integer> getListaDeMaestras() {
         return listaDeMaestras;
     }
 
-    public void setListaDeMaestras(ArrayList<Maestra> listaDeMaestras) {
+    public void setListaDeMaestras(ArrayList<Integer> listaDeMaestras) {
         this.listaDeMaestras = listaDeMaestras;
     }
 
@@ -29,6 +29,10 @@ public class Sala {
 
     public void setTipoDeSala(TipoDeSala tipoDeSala) {
         this.tipoDeSala = tipoDeSala;
+    }
+
+    public boolean agregarMaestra(int dni) {
+        return (listaDeMaestras.add(dni));
     }
 
     public enum TipoDeSala {
