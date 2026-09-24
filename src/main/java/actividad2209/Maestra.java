@@ -79,7 +79,10 @@ public class Maestra {
                     contador = 3;
                 }
                 if(ee==1) recibida = true;
-                else if (ee==2) recibida = false;
+                else if (ee==2) {
+                    recibida = false;
+                    sueldo = sueldo / 2;
+                }
                 else{
                     System.out.println("Entrada invalida");
                     contador = 3;
