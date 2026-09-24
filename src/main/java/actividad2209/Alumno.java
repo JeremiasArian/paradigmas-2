@@ -103,13 +103,10 @@ public class Alumno {
                 System.out.println("Saliendo...");
                 break;
             } else if(opcion == 1) {
-                opcion = 0;
                 a.setTurno(Alumno.Turno.MANANA);
             }else if(opcion==2) {
-                opcion = 0;
                 a.setTurno(Alumno.Turno.TARDE);
             }else if(opcion==3) {
-                opcion = 0;
                 a.setTurno(Alumno.Turno.DOBLE);
             } else{
                 System.out.println("Opciones disponibles:");
