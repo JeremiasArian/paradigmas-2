@@ -32,6 +32,15 @@ public class SalasDisponibles {
         return salas.get(salaSeleccionada).agregarMaestra(dni);
     }
 
+    public boolean legajoYaUsado(int dni) {
+        for (Sala sala:salas){
+            if (sala.getListaDeMaestras().contains(dni)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void registrarLactarios() {
         System.out.println("Ingrese la cantidad los lactarios disponibles para hoy:");
         int numero = 0;

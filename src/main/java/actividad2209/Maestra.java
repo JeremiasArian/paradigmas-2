@@ -53,6 +53,11 @@ public class Maestra {
                     System.out.println("Entrada invalida");
                     contador = 1;
                 }
+                if (sl.legajoYaUsado(legajo)) {
+                    System.out.println("El DNI ingresado ya está registrado");
+                    contador = 1;
+                    legajo = 0;
+                }
             } else if (contador == 3) {
                 try {
                     sueldo = Double.parseDouble(entrada);
