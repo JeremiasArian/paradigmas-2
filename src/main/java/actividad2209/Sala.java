@@ -35,6 +35,10 @@ public class Sala {
         return (listaDeMaestras.add(dni));
     }
 
+    public boolean agregarAlumno(Alumno a) {
+        return (listaDeAlumnos.add(a));
+    }
+
     public enum TipoDeSala {
         LACTORIO,
         DEAMBULADOR,

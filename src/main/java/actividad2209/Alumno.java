@@ -10,10 +10,11 @@ public class Alumno {
     private int edad = 0;
     private boolean meses = false;
     private boolean anios = false;
+    private int dni = 0;
 
     public Alumno(){}
 
-    public void registrar() {
+    public void registrar(SalasDisponibles sl) {
         System.out.println("Primero, Ingrese la edad del nene");
         System.out.println("1) Para ingresar la edad en meses");
         System.out.println("2) Para ingresar la edad en años");
@@ -23,6 +24,53 @@ public class Alumno {
         System.out.println("2) Tarde");
         System.out.println("3) A los dos");
         ingresarInputYValidar(this);
+
+        System.out.println("Ingresá el DNI");
+        while (true) {
+            Scanner s = new Scanner(System.in);
+            int iiiiiii = 000000000000000000000000;
+            try {
+                iiiiiii = s.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada invalida");
+            }
+
+            if (sl.legajoYaUsado(iiiiiii,true)) {
+                System.out.println("El DNI ingresado ya está registrado");
+            } else {
+                dni = iiiiiii;
+                break;
+            }
+        }
+
+        System.out.println("Para finalizar el registro, agregálo a uno de los sgtes. salones:");
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        sl.imprimirSalasRegistradas();
+
+        int seleccion = -2;
+        while (seleccion == -2) {
+            Scanner s = new Scanner(System.in);
+
+            try {
+                seleccion = s.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada invalida");
+            }
+
+            if (seleccion <= -2) {
+                continue;
+            } else if (seleccion == -1) System.exit(0);
+
+            if (sl.asignarAlumnoASala(this, seleccion)) {
+                System.out.println("Alumno registrado con éxito");
+            }
+        }
     }
 
     private void asignarEdad(){
@@ -165,6 +213,14 @@ public class Alumno {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public enum Turno{

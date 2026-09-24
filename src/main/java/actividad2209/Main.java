@@ -67,7 +67,17 @@ public class Main {
             else if(opcion == 3){
                 opcion = 0;
                 Alumno alumno = new Alumno();
-                alumno.registrar();
+                alumno.registrar(sl);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                imprimirMenu();
+            }
+            else if(opcion == 4){
+                opcion = 0;
+                sl.removerAlumno();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
@@ -83,7 +93,7 @@ public class Main {
         System.out.println("1) Registrar una sala");
         System.out.println("2) Registrar maestra");
         System.out.println("3) Inscribir alumno");
-        System.out.println("4) Eliminar alumno");
+        System.out.println("4) Dar de baja un alumno");
         System.out.println("5) Eliminar una sala");
         System.out.println("6) Eliminar una maestra de un salon");
         System.out.println("7) Agregar una maestra a un salon");

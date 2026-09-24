@@ -32,7 +32,17 @@ public class SalasDisponibles {
         return salas.get(salaSeleccionada).agregarMaestra(dni);
     }
 
-    public boolean legajoYaUsado(int dni) {
+    public boolean legajoYaUsado(int dni, boolean alumno) {
+        if (alumno) {
+            for (Sala sala:salas){
+                for (Alumno aaaa: sala.getListaDeAlumnos()) {
+                    if (aaaa.getDni() == dni) {
+                        return true;
+                    }
+                }
+            }
+        }
+
         for (Sala sala:salas){
             if (sala.getListaDeMaestras().contains(dni)) {
                 return true;
@@ -178,6 +188,91 @@ public class SalasDisponibles {
                 break;
             }
         }
+    }
+
+    public void removerAlumno() {
+        boolean flag = false;
+
+        if (salas.isEmpty()) {
+            System.out.println("No hay salones registrados!");
+            System.out.println("Primero, registrá al menos uno marcando la opción 1");
+            return;
+        }
+
+        int salonesVacios = 0;
+        for (Sala sala:salas) {
+            if (sala.getListaDeAlumnos().isEmpty()) {
+                salonesVacios++;
+            }
+        }
+
+        if (salonesVacios == salas.size()) {
+            System.out.println("No hay alumnos registrados!");
+            System.out.println("Primero, registrá al menos uno marcando la opción 3");
+            return;
+        }
+
+        System.out.println("Ingresa el dni (sin puntos) del alumno a dar de baja:");
+        System.out.println("Imprimiendo lista de DNIs registrados...");
+        imprimirListaDeDNIs();
+
+        int dni = 0;
+        while (dni==0) {
+            Scanner s = new Scanner(System.in);
+            try {
+                dni = s.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada invalida");
+            }
+
+            if (dni == -1) {
+                System.out.println("Saliendo...");
+                break;
+            }
+        }
+
+
+        for(Sala sala: salas){
+
+            Alumno alumnoADarDeBaja = null;
+
+            for (Alumno a :sala.getListaDeAlumnos()) {
+                if (a.getDni() == dni) {
+                    alumnoADarDeBaja = a;
+                }
+            }
+
+            if(alumnoADarDeBaja!=null){
+                sala.getListaDeAlumnos().remove(alumnoADarDeBaja);
+                flag = true;
+            }
+        }
+
+        if(flag){
+            System.out.println("Alumno dado de baja con éxito");
+        } else System.out.println("El alumno no fue encontrado en ningún salón");
+    }
+
+    private void imprimirListaDeDNIs() {
+        for (Sala sala : salas) {
+            for(Alumno a :sala.getListaDeAlumnos()){
+                System.out.println("* "+a.getDni());
+                try {
+                    Thread.sleep(432);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
+    public boolean asignarAlumnoASala(Alumno a, int seleccion) {
+        if (salas.get(seleccion) == null) {
+            System.out.println("La sala seleccionada no existe, por favor reintentá.");
+            return false;
+        }
+
+        return salas.get(seleccion).agregarAlumno(a);
     }
 
     public boolean getLactarios() {

@@ -58,7 +58,7 @@ public class Maestra {
                     System.out.println("Entrada invalida");
                     contador = 1;
                 }
-                if (sl.legajoYaUsado(legajo)) {
+                if (sl.legajoYaUsado(legajo, false)) {
                     System.out.println("El DNI ingresado ya está registrado");
                     contador = 1;
                     legajo = 0;
