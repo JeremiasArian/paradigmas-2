@@ -94,12 +94,9 @@ public class Main {
         System.out.println("2) Registrar maestra");
         System.out.println("3) Inscribir alumno");
         System.out.println("4) Dar de baja un alumno");
-        System.out.println("5) Eliminar una sala");
-        System.out.println("6) Eliminar una maestra de un salon");
-        System.out.println("7) Agregar una maestra a un salon");
-        System.out.println("8) Calcular la ganancia mensual del jardín");
-        System.out.println("9) Imprimir cuota de un alumno seleccionado");
-        System.out.println("10) Imprimir la lista de alumnos ordenada por apellido en formulario independiente");
+        System.out.println("5) Calcular la ganancia mensual del jardín");
+        System.out.println("6) Imprimir cuota de un alumno seleccionado");
+        System.out.println("7) Imprimir la lista de alumnos ordenada por apellido en formulario independiente");
         System.out.println("-1 Salir de este programa.");
     }
 
