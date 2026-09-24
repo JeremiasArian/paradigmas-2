@@ -7,6 +7,7 @@ public class Maestra {
     private String nombre;
     private String apellido;
     private int legajo;
+    private boolean recibida;
     private double sueldo;
 
     public void registrarYAsignarASalon(SalasDisponibles sl){
@@ -18,7 +19,7 @@ public class Maestra {
 
         String entrada = "";
         int contador = 0;
-        while (contador <= 3) {
+        while (contador <= 4) {
             Scanner s = new Scanner(System.in);
 
             if (contador == 0) {
@@ -29,6 +30,10 @@ public class Maestra {
                 System.out.println("Ingresa el DNI (sin puntos) de la Maestra:");
             } else if (contador == 3) {
                 System.out.println("Ingresa el sueldo (sin puntos ni comas) de la Maestra:");
+            } else if(contador==4){
+                System.out.println("Esta maestra está recibida?");
+                System.out.println("1)Si");
+                System.out.println("2)No");
             }
 
             try {
@@ -64,6 +69,20 @@ public class Maestra {
                 } catch (NumberFormatException e) {
                     System.out.println("Entrada invalida");
                     contador = 2;
+                }
+            } else if(contador==4){
+                int ee = 0;
+                try {
+                    ee = Integer.parseInt(entrada);
+                } catch (NumberFormatException e) {
+                    System.out.println("Entrada invalida");
+                    contador = 3;
+                }
+                if(ee==1) recibida = true;
+                else if (ee==2) recibida = false;
+                else{
+                    System.out.println("Entrada invalida");
+                    contador = 3;
                 }
             }
 
@@ -129,5 +148,13 @@ public class Maestra {
 
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
+    }
+
+    public boolean isRecibida() {
+        return recibida;
+    }
+
+    public void setRecibida(boolean recibida) {
+        this.recibida = recibida;
     }
 }
